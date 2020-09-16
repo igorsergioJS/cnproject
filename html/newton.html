@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8"/>
+    <title>Raízes: Newton-Raphson</title>
+    <link rel="stylesheet" type="text/css" href="../css/newton.css">
+    <script type="text/javascript" src="../js/newton.js"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+    <script src="https://kit.fontawesome.com/41581a1fed.js" crossorigin="anonymous"></script>
+</head>
+
+
+<body>
+
+
+<nav class="sidebar">
+    <div class="text">Códigos</div>
+
+    <ul>
+        <li><a href="index.html">Página inicial</a></li>
+        <li><a href="#" class="tay-btn">Série de Taylor<span class="fas fa-caret-down first"></span></a>
+            <ul class="tay-show">
+
+            <li><a href="taylor.html"><i class="far fa-circle"></i>Aproximação</a></li>
+
+            </ul>
+        </li>
+        <li>
+            <a href="#"class="rai-btn">Raízes <span class="fas fa-caret-down second"></span></a>
+            <ul class="rai-show">
+                <li><a href="bisseccao.html"><i class="far fa-circle"></i>Bissecção</a></li>
+                <li><a href="falseposition.html"><i class="far fa-circle"></i>Falsa posição</a></li>
+                <li><a href="newton.html"><i class="far fa-dot-circle"></i>Newton-Raphson</a></li>
+                <li><a href="secante.html"><i class="far fa-circle"></i>Secante</a></li>
+            </ul>
+        </li>
+        <li>
+            <a href="#" class="sis-btn">Sistemas Lineares<span class="fas fa-caret-down third"></span></a>
+            <ul class="sis-show">
+                <li><a href="#"><i class="far fa-circle"></i>Sistemas triangulares</a></li>
+                <li><a href="#"><i class="far fa-circle"></i>Método de Gauss</a></li>
+                <li><a href="#"><i class="far fa-circle"></i>Decomposição LU</a></li>
+                <li><a href="#"><i class="far fa-circle"></i>Jacobi</a></li>
+                <li><a href="#"><i class="far fa-circle"></i>Gauss-Seidel</a></li>
+            </ul>
+
+        </li>
+        <li>
+            <a href="#" class="mmq-btn">MMQ<span class="fas fa-caret-down fourth"></span></a>
+            <ul class="mmq-show">
+                <li><a href="#"><i class="far fa-circle"></i>Regressão linear</a></li>
+                <li><a href="#"><i class="far fa-circle"></i>Regressão polinomial</a></li>
+                <li><a href="#"><i class="far fa-circle"></i>Caso Geral</a></li>
+            </ul>
+        </li>
+        <li>
+            <a href="#" class="inter-btn">Interpolação<span class="fas fa-caret-down fifth"></span></a>
+            <ul class="inter-show">
+                <li><a href="#"><i class="far fa-circle"></i>Lagrange</a></li>
+                <li><a href="#"><i class="far fa-circle"></i>Newton</a></li>
+            </ul>
+        </li>
+
+        <li>
+            <a href="#" class="integ-btn">Integração<span class="fas fa-caret-down sixth"></span></a>
+            <ul class="integ-show">
+                <li><a href="#"><i class="far fa-circle"></i>Regra do trapézio</a></li>
+                <li><a href="#"><i class="far fa-circle"></i>Simpson 1/3</a></li>
+                <li><a href="#"><i class="far fa-circle"></i>Simpson 3/8</a></li>
+            </ul>
+
+        </li>
+        <li>
+            <a href="#" class="edo-btn">EDOs<span class="fas fa-caret-down seventh"></span></a>
+            <ul class="edo-show">
+                <li><a href="#"><i class="far fa-circle"></i>Método de Euler</a></li>
+                <li><a href="#"><i class="far fa-circle"></i>Método de Geun</a></li>
+                <li><a href="#"><i class="far fa-circle"></i>Método do Ponto Médio</a></li>
+                <li><a href="#"><i class="far fa-circle"></i>Métodos de Runge-Kutta</a></li>
+            </ul>
+        </li>
+
+    </ul>
+
+</nav>
+
+
+<div class="content">
+
+    <h1>Método de Newton-Raphson</h1>
+    <h2>Calcula a raiz da equação dada f (x) = 0 usando o <a href="https://cn.ect.ufrn.br/index.php?r=conteudo%2Fraizes-newton" target ="_blank">método de Newton-Raphson.</a></h2>
+    <br></br>
+
+    <label for="fx">f(x): </label>
+    <input type="text" id="fx" name="fx">
+
+    <br></br>
+
+    <label for="dfx">f'(x): </label>
+    <input type="text" id="dfx" name="dfx">
+
+    <br></br>
+
+    <label for="a">x<sub>0</sub>: </label>
+    <input type="number" id="x0" name="x0"
+    min="10" max="100" oninput="display.value=value" onchange="display.value=value">
+ 
+
+    <label id="labelr" for="range">N iterações: </label>
+    <input type="number" id="range" name="range" 
+       min="10" max="100"oninput="display.value=value" onchange="display.value=value">
+
+       <input type="checkbox" id="check" name="check" value="check" onclick="checkbox()">
+       
+
+       <label for="prec">Precisão </label>
+    <input type="number" id="prec" name="prec" 
+       min="10" max="100"oninput="display.value=value" onchange="display.value=value" disabled>
+
+
+    
+
+
+    <table id="minhaTabela" border="1" >
+
+        <tr>
+            <td id ="N">
+                N
+            </td>
+            <td id ="ini">
+                x
+            </td>
+            <td id ="ini">
+                Erro
+            </td>
+            <td id ="ini">
+                f(x)
+            </td>
+        </tr>
+        
+        
+    </table>
+
+        <!-- Este botão quando acionado irá chamar a função responsável em inserir a linha na tabela -->
+        
+        <input type="button" id ="b1" value="Gerar" onclick="inserirLinhaTabela();this.disabled=true; this.value='Operação concluída'; change()"/>
+
+        <input type="button" id="b2" value="Nova Operação" style="display: none;" onclick='parent.location="javascript:location.reload()"'/>
+        
+        
+    
+</div>
+
+<script>
+    $('.tay-btn').click(function(){
+        $('nav ul .tay-show').toggleClass("show");
+        $('nav ul .first').toggleClass("rotate");
+      });
+    
+        $('nav ul .rai-show').toggleClass("show1");
+        $('nav ul .second').toggleClass("rotate");
+
+        $('.rai-btn').click(function(){
+        $('nav ul .rai-show').toggleClass("show1");
+        $('nav ul .second').toggleClass("rotate");
+      });
+      
+        
+      $('.sis-btn').click(function(){
+        $('nav ul .sis-show').toggleClass("show2");
+        $('nav ul .third').toggleClass("rotate");
+      });
+      $('.mmq-btn').click(function(){
+        $('nav ul .mmq-show').toggleClass("show3");
+        $('nav ul .fourth').toggleClass("rotate");
+      });
+      $('.inter-btn').click(function(){
+        $('nav ul .inter-show').toggleClass("show4");
+        $('nav ul .fifth').toggleClass("rotate");
+      });
+      $('.integ-btn').click(function(){
+        $('nav ul .integ-show').toggleClass("show5");
+        $('nav ul .sixth').toggleClass("rotate");
+      });
+      $('.edo-btn').click(function(){
+        $('nav ul .edo-show').toggleClass("show6");
+        $('nav ul .seventh').toggleClass("rotate");
+      });
+      $(".sidebar li a").click(function(){
+   $(".sidebar ul").not($(this).next()).removeClass("show");
+});
+$(".sidebar li a").click(function(){
+   $(".sidebar ul").not($(this).next()).removeClass("show1");
+});
+$(".sidebar li a").click(function(){
+   $(".sidebar ul").not($(this).next()).removeClass("show2");
+});
+$(".sidebar li a").click(function(){
+   $(".sidebar ul").not($(this).next()).removeClass("show3");
+});
+$(".sidebar li a").click(function(){
+   $(".sidebar ul").not($(this).next()).removeClass("show4");
+});
+$(".sidebar li a").click(function(){
+   $(".sidebar ul").not($(this).next()).removeClass("show5");
+});
+$(".sidebar li a").click(function(){
+   $(".sidebar ul").not($(this).next()).removeClass("show6");
+});
+
+
+      
+</script>
+
+</body>
+
+</html>

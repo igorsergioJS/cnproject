@@ -1,0 +1,177 @@
+@import url('https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap');
+*
+{
+    margin: 0;
+    padding: 0;
+    user-select: none;
+    box-sizing: border-box;
+    color: white;
+    font-family: 'Poppins', sans-serif;
+}
+
+.sidebar
+{
+    position: fixed;
+    width: 250px;
+    height: 100%;
+    height: 100%;
+    left: 0;
+    background: #1b1b1b;
+}
+
+.sidebar .text
+{
+    color: white;
+    font-size: 25px;
+    font-weight: 65px;
+    text-align: center;
+    background: #1e1e1e;
+    letter-spacing: 1px;
+
+}
+
+nav ul
+{
+    background: #1b1b1b;
+    height: 100%;
+    width: 100%;
+    list-style: none;
+}
+
+nav ul li
+{
+    line-height: 60px;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+nav ul li a
+{
+    position: relative;
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+    padding-left: 40px;
+    font-weight: 500;
+    display: block;
+    width: 100%;
+    border-left: 3px solid transparent;
+}
+
+nav ul li a:hover
+{
+    color: cyan;
+    background: #1e1e1e;
+    border-left-color: cyan;
+
+}
+
+nav ul ul
+{
+    position: static;
+    display: none;
+
+}
+
+nav ul ul li
+{
+    position: static;
+    line-height: 42px;
+    border-bottom: none;
+
+}
+
+nav ul ul li a
+{
+   font-size: 14px;
+    color: #e6e6e6;
+    padding-left: 45px;
+}
+
+nav ul li a span
+{
+  position: absolute; 
+  top: 50%;
+  right: 20px;
+  transform: translateY(-50%);
+  font-size: 22px;
+  transition: transform 0.4s;
+
+  
+}
+
+nav ul li a span.rotate
+{
+    transform: translateY(-50%) rotate(-180deg);
+}
+
+nav ul .tay-show.show
+{
+   display:block;  
+}
+
+nav ul .rai-show.show1
+{
+   display:block; 
+}
+
+nav ul .sis-show.show2
+{
+   display:block;  
+}
+
+nav ul .mmq-show.show3
+{
+   display:block;
+      
+}
+nav ul .inter-show.show4
+{
+   display:block;   
+}
+
+nav ul .integ-show.show5
+{
+   display:block;   
+}
+nav ul .edo-show.show6
+{
+   display:block; 
+   
+}
+
+nav ul ul li a i
+{
+   margin-right: 10px;
+   margin-left: -25px;
+   color: gray;
+   
+}
+
+nav ul ul li:hover a i
+{
+   color: cyan;
+}
+
+.content
+{
+    position: absolute;
+    top: 15%;
+    left: 50%;
+    margin-left: 100px;
+    transform: translate(-50%,-50%);
+    color: #202020;
+    z-index: -1;
+    text-align: center;
+  }
+  .content .header
+  {
+    font-size: 45px;
+    font-weight: 600;
+    color: black;
+    
+  }
+  .content p
+  {
+    font-size: 30px;
+    font-weight: 500;
+    color: black;
+  }
